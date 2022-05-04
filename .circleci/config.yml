@@ -11,29 +11,31 @@ jobs:
     steps:
       - node/install
       - checkout
+      - node/install-yarn:
+          version: 1.22.4
       - aws-cli/setup
       - aws-elastic-beanstalk/setup
       - run:
           name: Front-End Install
           command: |
-            yarn run frontend:install
+            yarn  frontend:install
       - run:
           name: Back-End Install
           command: |
-            yarn run backend:install
+            yarn backend:install
       - run:
           name: Front-End Build
           command: |
-            yarn run frontend:build
+            yarn frontend:build
       - run:
           name: Back-End Build
           command: |
-            yarn run backend:build
+            yarn  backend:build
       - run:
           name: Front-End Deploy 
           command: |
-            yarn run frontend:deploy
+            yarn frontend:deploy
       - run:
           name: Back-End Deploy 
           command: |
-            yarn run backend:deploy
+            yarn  backend:deploy
